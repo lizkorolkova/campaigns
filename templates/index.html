@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title>OMD Campaigns</title>
+  <style>
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      color: #FF0000;
+      text-align: left
+    }
+    table {
+      margin: right;
+    }
+  </style>
+</head>
+ 
+<body>
+  <h1>
+      {{what}}
+  </h1>
+  <table>
+    <tr>
+      <td>
+        <form action="{{ request.build_absolute_uri }}upload/" method="POST" enctype="multipart/form-data">
+          <input type="file" name="file"/>
+          <br />
+          <input type="submit" value="Загрузить файл" />
+        </form>
+      </td>
+    </tr>
+  </table>
+ 
+</body>
+ 
+</html>
