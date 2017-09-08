@@ -1,0 +1,97 @@
+<html>
+<head>
+	<title>OMD Campaigns</title>
+	<style>
+		h1 {
+		  font-size: 2em;
+		  font-weight: bold;
+		  color: #FF0000;
+		  text-align: left
+		}
+		table {
+		  margin: right;
+		}
+  </style>
+</head>
+
+<body> 
+ <h1>
+      OMD Campaigns
+ </h1>
+ <table>
+    <tr>
+        <td>Filename to Save As:</td>
+        <td><input id="inputFileNameToSaveAs"></input></td>
+        <td><button onclick="saveTextAsFile()">Save Text to File</button></td>
+    </tr>
+    <tr>
+        <td>Select a File to Load:</td>
+        <td><input type="file" id="fileToLoad"></td>
+        <td><button onclick="loadFileAsText()">Load Selected File</button><td>
+    </tr>
+	<tr>
+	<td>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<body>
+
+		<div class="w3-container">
+		  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Help</button>
+
+		  <div id="id01" class="w3-modal">
+			<div class="w3-modal-content">
+			  <div class="w3-container">
+				<span onclick="document.getElementById('id01').style.display='none'">&times;</span>
+				<p>Some info about usage.</p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		</td>
+	</tr>
+</table>
+
+
+ 
+<script type="text/javascript">
+ 
+function saveTextAsFile()
+{
+    var textToSave = document.getElementById("inputTextToSave").value;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+ 
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+ 
+    downloadLink.click();
+}
+ 
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+ 
+function loadFileAsText()
+{
+    var fileToLoad = document.getElementById("fileToLoad").files[0];
+ 
+    var fileReader = new FileReader();
+    fileReader.onload = function(fileLoadedEvent) 
+    {
+        var textFromFileLoaded = fileLoadedEvent.target.result;
+        document.getElementById("inputTextToSave").value = textFromFileLoaded;
+    };
+    fileReader.readAsText(fileToLoad, "UTF-8");
+}
+ 
+</script>
+ 
+</body>
+</html>

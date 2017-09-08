@@ -16,7 +16,7 @@
  
 <body>
   <h1>
-      {{what}}
+      {what}
   </h1>
   <table>
     <tr>
@@ -24,10 +24,17 @@
         <form action="{{ request.build_absolute_uri }}upload/" method="POST" enctype="multipart/form-data">
           <input type="file" name="file"/>
           <br />
-          <input type="submit" value="Загрузить файл" />
+          <input type="submit" value="Загрузить файл" />		  
         </form>
       </td>
     </tr>
+	<tr>
+		<td> 
+		<a href="path/to/file" download="renamed.txt">Download</a>
+		<a href="downloads/export.xlsx" download="Data-Export.xlsx">Download Export</a>
+		</form>
+		</td>
+	</tr>
   </table>
  
 </body>
